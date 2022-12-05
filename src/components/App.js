@@ -14,15 +14,12 @@ export class App extends Component {
 
   countTotalFeedback() {
     const { good, neutral, bad } = this.state;
-    console.log(good);
     return good + neutral + bad;
   }
 
   countPositiveFeedbackPercentage() {
-    const { good, neutral, bad } = this.state;
-    if (!good && !neutral && !bad) {
-      return 0;
-    } else return ((good / this.countTotalFeedback()) * 100).toFixed(0);
+    const { good } = this.state;
+    return ((good / this.countTotalFeedback()) * 100).toFixed(0);
   }
 
   render() {
