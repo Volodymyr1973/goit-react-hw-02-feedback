@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Section } from './section/Section';
 import { FeedbackOptions } from './feedbackoptions/FeedbackOptions';
 import { Statistics } from './statistics/Statistics';
@@ -55,3 +56,13 @@ export class App extends Component {
     );
   }
 }
+
+App.protoType = {
+  state: PropTypes.arrayOf(
+    PropTypes.shape({
+      good: PropTypes.number,
+      neutral: PropTypes.number,
+      bad: PropTypes.number,
+    })
+  ).isRequired,
+};
