@@ -11,7 +11,7 @@ export const Statistics = ({
 }) => {
   return (
     <div>
-      {good || neutral || bad ? (
+      {total ? (
         <>
           <p className={css.statistics__good}>Good: {good}</p>
           <p className={css.statistics__neutral}>Neutral: {neutral}</p>

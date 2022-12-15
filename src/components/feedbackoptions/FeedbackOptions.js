@@ -1,33 +1,35 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import css from './FeedbackOptions.module.css';
 
-export const FeedbackOptions = ({ onChange }) => {
+export const FeedbackOptions = ({ onChange, options }) => {
+  const optionsBtn = Object.keys(options);
+  console.log(optionsBtn);
+  console.log(css);
   return (
     <div className={css.feedback__box}>
-      <button
-        type="button"
-        name="good"
-        className={css.button__good}
-        onClick={onChange}
-      >
-        Good
-      </button>
-      <button
-        type="button"
-        name="neutral"
-        className={css.button__neutral}
-        onClick={onChange}
-      >
-        Neutral
-      </button>
-      <button
-        type="button"
-        name="bad"
-        className={css.button__bad}
-        onClick={onChange}
-      >
-        Bad
-      </button>
+      {optionsBtn.map(option => (
+        <button
+          type="button"
+          key={option}
+          name={option}
+          className={css[`button__${option}`]}
+          onClick={onChange}
+        >
+          {option}
+        </button>
+      ))}
     </div>
   );
+};
+
+FeedbackOptions.propTypes = {
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      good: PropTypes.string,
+      neutral: PropTypes.string,
+      bad: PropTypes.string,
+    })
+  ),
+  onChange: PropTypes.func.isRequired,
 };
