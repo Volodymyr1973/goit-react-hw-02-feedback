@@ -4,8 +4,6 @@ import css from './FeedbackOptions.module.css';
 
 export const FeedbackOptions = ({ onChange, options }) => {
   const optionsBtn = Object.keys(options);
-  console.log(optionsBtn);
-  console.log(css);
   return (
     <div className={css.feedback__box}>
       {optionsBtn.map(option => (
@@ -24,12 +22,10 @@ export const FeedbackOptions = ({ onChange, options }) => {
 };
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      good: PropTypes.string,
-      neutral: PropTypes.string,
-      bad: PropTypes.string,
-    })
-  ),
+  options: PropTypes.shape({
+    good: PropTypes.number,
+    neutral: PropTypes.number,
+    bad: PropTypes.number,
+  }),
   onChange: PropTypes.func.isRequired,
 };

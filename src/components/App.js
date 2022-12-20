@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Section } from './section/Section';
 import { FeedbackOptions } from './feedbackoptions/FeedbackOptions';
 import { Statistics } from './statistics/Statistics';
@@ -12,14 +12,20 @@ export class App extends Component {
     bad: 0,
   };
 
+  // onLeaveFeedback = event => {
+  //   if (event.target.name === 'good') {
+  //     this.setState(prevState => ({ good: prevState.good + 1 }));
+  //   } else if (event.target.name === 'neutral') {
+  //     this.setState(prevState => ({ neutral: prevState.neutral + 1 }));
+  //   } else if (event.target.name === 'bad') {
+  //     this.setState(prevState => ({ bad: prevState.bad + 1 }));
+  //   }
+  // };
+
   onLeaveFeedback = event => {
-    if (event.target.name === 'good') {
-      this.setState(prevState => ({ good: prevState.good + 1 }));
-    } else if (event.target.name === 'neutral') {
-      this.setState(prevState => ({ neutral: prevState.neutral + 1 }));
-    } else if (event.target.name === 'bad') {
-      this.setState(prevState => ({ bad: prevState.bad + 1 }));
-    }
+    this.setState(prevState => ({
+      [event.target.name]: prevState[event.target.name] + 1,
+    }));
   };
 
   countTotalFeedback() {
@@ -56,13 +62,3 @@ export class App extends Component {
     );
   }
 }
-
-App.protoType = {
-  state: PropTypes.arrayOf(
-    PropTypes.shape({
-      good: PropTypes.number,
-      neutral: PropTypes.number,
-      bad: PropTypes.number,
-    })
-  ).isRequired,
-};
